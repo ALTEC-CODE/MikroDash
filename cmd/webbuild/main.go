@@ -61,14 +61,14 @@ const head = `<!doctype html>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <script src="/preflight.js"></script>
-  <title>MikroDash</title>
+  <title>ALTEC Dashboard</title>
   <link rel="stylesheet" href="/vendor/tabler.min.css"/>
   <link rel="stylesheet" href="/vendor/fonts/fonts.css"/>
   <link rel="stylesheet" href="/css/app-fonts.css"/>
   <link rel="stylesheet" href="/css/dashboard-grid.css"/>
   <link rel="stylesheet" href="/css/topology.css"/>
   <link rel="stylesheet" href="/app.css"/>
-  <link rel="icon" type="image/png" href="/logo.png"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 </head>
 <body>
 `

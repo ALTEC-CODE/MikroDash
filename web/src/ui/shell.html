@@ -11,7 +11,9 @@
 
 <nav id="sidenav">
   <div class="nav-logo">
-    <img src="/logo.png" alt="MikroDash" />
+    <button type="button" id="navMenuBtn" class="nav-menu-btn" aria-label="Toggle menu" title="Menu">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <div id="navRouterWrap">
       <span class="rtr-status-dot" id="navRtrStatusDot"></span>
       <select id="navRouterSelect" title="Switch router"></select>
@@ -220,7 +222,9 @@
 
 <div id="main">
   <div id="topbar">
-    <h1 id="topbarLogo">Mikro<span>Dash</span></h1>
+    <div id="topbarLogo" aria-label="ALTEC Dashboard">
+      <img src="/logo_horizontal.png" alt="ALTEC">
+    </div>
     <div class="topbar-sep"></div>
     <div id="pageTitleWrap">
       <span id="pageTitleIcon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>

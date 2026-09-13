@@ -198,14 +198,18 @@ export function applyTheme(t: string): void {
   root().setAttribute('data-bs-theme', t === 'light' ? 'light' : 'dark');
   const p = el('themeIconPath');
   if (p) p.setAttribute('d', t === 'light' ? SUN : MOON);
+  const logo = document.querySelector<HTMLImageElement>('#topbarLogo img');
+  if (logo) {
+    logo.src = t === 'light' ? '/logo_horizontal_black.png' : '/logo_horizontal.png';
+  }
   lsSet(KEYS.theme, t);
   reapplyTextVars();
   reapplyBgVars();
 }
 
-/** An unknown id falls back to Syne — FONTS[1], by position, as the original. */
+/** An unknown id falls back to Poppins. */
 export function applyFont(fontId: string): void {
-  const font = FONTS.find((f) => f.id === fontId) || FONTS[1]!;
+  const font = FONTS.find((f) => f.id === fontId) || FONTS.find((f) => f.id === 'poppins') || FONTS[0]!;
   root().style.setProperty('--font-ui', font.family);
   lsSet(KEYS.font, font.id);
 }
@@ -241,7 +245,7 @@ export function initAppearance(): void {
   // standing and the sliders ignored until something else repainted.
   applyTheme(lsGet(KEYS.theme) || 'dark');
 
-  applyFont(lsGet(KEYS.font) || 'syne');
+  applyFont(lsGet(KEYS.font) || 'poppins');
   applyFontSize(lsGet(KEYS.fontSize) || 'normal');
 
   const num = (key: string): number =>

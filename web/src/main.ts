@@ -240,6 +240,14 @@ function wireNav(socket: Socket): void {
   el('burgerBtn')?.addEventListener('click', () => {
     if (sidenav?.classList.contains('mobile-open')) closeNav(); else openNav();
   });
+  // Desktop: pin/unpin the expanded sidenav. Mobile: same as the floating burger.
+  el('navMenuBtn')?.addEventListener('click', () => {
+    if (window.innerWidth <= 767) {
+      if (sidenav?.classList.contains('mobile-open')) closeNav(); else openNav();
+      return;
+    }
+    sidenav?.classList.toggle('nav-pinned');
+  });
   navOverlay?.addEventListener('click', closeNav);
   // Choosing a page closes the nav, but only where it overlays the content.
   // The width test is the original's: above it the sidenav is permanent and
