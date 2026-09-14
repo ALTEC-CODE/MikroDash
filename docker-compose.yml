@@ -21,8 +21,12 @@ services:
     # still `mikrodash_data` and neither rename can orphan it.
     image: mikrodash
     container_name: MikroDash
+    # Host publish bind. Default 127.0.0.1 so production is only reachable via
+    # the Cloudflare tunnel (Docker DNS → mikrodash:3081), not via a VPN/LAN
+    # IP such as 10.8.0.1:3081. Development: set MIKRODASH_PUBLISH=0.0.0.0
+    # in .env to allow access by machine IP.
     ports:
-      - "3081:3081"
+      - "${MIKRODASH_PUBLISH:-127.0.0.1}:3081:3081"
     volumes:
       - data:/data
     restart: unless-stopped
