@@ -88,5 +88,24 @@ services:
         max-size: "10m"
         max-file: "3"
 
+  # CUSTOM: Cloudflare Tunnel (optional). Enable with COMPOSE_PROFILES=tunnel.
+  # Zero Trust → Public Hostname service URL: http://mikrodash:3081
+  tunnel:
+    profiles: ["tunnel"]
+    image: cloudflare/cloudflared:latest
+    container_name: mikrodash-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    depends_on:
+      mikrodash:
+        condition: service_started
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
 volumes:
   data:
